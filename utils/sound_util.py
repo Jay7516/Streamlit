@@ -46,13 +46,14 @@ async def speak_voice(text, voice="zh-HK-HiuGaaiNeural"):
     await communicate.save("output.mp3")
     # audio = AudioSegment.from_file("output.mp3")
     # play(audio)
-    pygame.mixer.init()
+    return "output.mp3"
+    # pygame.mixer.init()
 
-    # Load the sound file (use a valid path to a .wav or .mp3 file)
-    sound = pygame.mixer.Sound('output.mp3')
+    # # Load the sound file (use a valid path to a .wav or .mp3 file)
+    # sound = pygame.mixer.Sound('output.mp3')
 
-    # Play the sound (loops = -1 means it will loop forever, 0 means play once)
-    sound.play()
+    # # Play the sound (loops = -1 means it will loop forever, 0 means play once)
+    # sound.play()
     # playsound("output.mp3")
     # os.remove("output.mp3")
 

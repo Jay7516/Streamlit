@@ -63,4 +63,5 @@ if prompt:
     
         st.markdown(output.content)
         st.session_state.messages.append(AIMessage(content=output.content))
-        generate_voice(output.content)
+        #generate_voice(output.content)
+        st.audio(call_speak(output.content), format="audio/mp3")
