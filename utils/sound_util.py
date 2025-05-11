@@ -4,7 +4,8 @@ from playsound import playsound
 import os
 import pyttsx3
 from multiprocessing import Process
-
+from pydub import AudioSegment
+from pydub.playback import play
 FILEPATH = "sound\Im Joe Biden and I approve this message.mp3"
 
 
@@ -42,8 +43,10 @@ def terminate_voice():
 async def speak_voice(text, voice="zh-HK-HiuGaaiNeural"):
     communicate = edge_tts.Communicate(text, voice=voice)
     await communicate.save("output.mp3")
-    playsound("output.mp3")
-    os.remove("output.mp3")
+    audio = AudioSegment.from_file("output.mp3")
+    play(audio)
+    # playsound("output.mp3")
+    # os.remove("output.mp3")
 
 def call_speak(text):
     asyncio.run(speak_voice(text, voice="en-US-AvaNeural"))
