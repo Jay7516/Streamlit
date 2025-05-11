@@ -17,3 +17,4 @@ pydantic
 langchain_google_genai
 edge-tts
 pyttsx3
+pygobject
