@@ -16,3 +16,4 @@ crawl4ai
 pydantic
 langchain_google_genai
 edge-tts
+pyttsx3
