@@ -45,8 +45,7 @@ async def speak_voice(text, voice="zh-HK-HiuGaaiNeural"):
     communicate = edge_tts.Communicate(text, voice=voice)
     await communicate.save("output.mp3")
     # audio = AudioSegment.from_file("output.mp3")
-    # play(audio)
-    return "output.mp3"
+    # play(audio) 
     # pygame.mixer.init()
 
     # # Load the sound file (use a valid path to a .wav or .mp3 file)

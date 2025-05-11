@@ -18,4 +18,3 @@ langchain_google_genai
 edge-tts
 pyttsx3
 pydub
-pygame
