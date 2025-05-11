@@ -8,6 +8,7 @@ from langchain.chat_models import init_chat_model
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 import json
 from utils.sound_util import call_speak,generate_voice
+import base64
 if not os.environ.get("GOOGLE_API_KEY"):
     os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
 
@@ -49,7 +50,19 @@ for message in st.session_state.messages:
             st.markdown(message.content)
 
 prompt = st.chat_input("Ask me anything about the mcdonald menu!")
-
+def autoplay_audio(file_path: str):
+    with open(file_path, "rb") as f:
+        data = f.read()
+        b64 = base64.b64encode(data).decode()
+        md = f"""
+            <audio controls autoplay="true">
+            <source src="data:audio/mp3;base64,{b64}" type="audio/mp3">
+            </audio>
+            """
+        st.markdown(
+            md,
+            unsafe_allow_html=True,
+        )
 if prompt:
 
     with st.chat_message("user"):
@@ -64,4 +77,4 @@ if prompt:
         st.markdown(output.content)
         st.session_state.messages.append(AIMessage(content=output.content))
         call_speak(output.content)
-        st.audio(("output.mp3"), format="audio/mp3")
+        autoplay_audio("output.mp3")
