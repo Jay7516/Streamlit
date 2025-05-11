@@ -7,7 +7,7 @@ load_dotenv()
 from langchain.chat_models import init_chat_model
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 import json
-from utils.sound_util import call_speak
+from utils.sound_util import call_speak,generate_voice
 if not os.environ.get("GOOGLE_API_KEY"):
     os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
 
@@ -63,4 +63,4 @@ if prompt:
     
         st.markdown(output.content)
         st.session_state.messages.append(AIMessage(content=output.content))
-        call_speak(output.content)
+        generate_voice(output.content)
