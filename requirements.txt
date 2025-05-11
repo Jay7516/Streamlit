@@ -1,7 +1,8 @@
 streamlit
 langchain
 python-magic
-python-magic-bin
+#python-magic-bin
+#libmagic 
 hf_xet
 langchain-huggingface
 langchain-ollama
