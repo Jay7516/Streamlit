@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Blueberry Muffin",
+        "calories": "N/A",
+        "fat": "N/A",
+        "fat_dv": "N/A",
+        "carbohydrates": "N/A",
+        "protein": "N/A",
+        "sodium": "N/A",
+        "sodium_dv": "N/A",
+        "description": "A sweet muffin with blueberries.",
+        "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-blueberry-muffin:nutrition-calculator-tile",
+        "image_description": "The image shows a blueberry muffin, golden brown in color, with visible blueberries on top.",
+        "all_ingredients": {},
+        "contains": [],
+        "invalid": true,
+        "url": "https://www.mcdonalds.com/ca/en-ca/product/blueberry-muffin.html",
+        "error": false
+    },
+    {
+        "name": "Hamburger",
+        "calories": "N/A",
+        "fat": "N/A",
+        "fat_dv": "N/A",
+        "carbohydrates": "N/A",
+        "protein": "N/A",
+        "sodium": "N/A",
+        "sodium_dv": "N/A",
+        "description": "A simple hamburger with a beef patty and a bun.",
+        "image_url": "https://s7d1.scene7.com/is/image/mcdonalds/mcdonalds-hamburger:nutrition-calculator-tile",
+        "image_description": "The image shows a classic McDonald's hamburger, featuring a sesame seed bun, a beef patty, pickles, onions, ketchup, and mustard.",
+        "all_ingredients": {},
+        "contains": [],
+        "invalid": true,
+        "url": "https://www.mcdonalds.com/ca/en-ca/full-menu.html",
+        "error": false
+    }
+]
