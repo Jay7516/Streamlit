@@ -3,10 +3,10 @@ from multiprocessing import Process
 
 import edge_tts
 import asyncio
-from playsound import playsound
 from time import sleep
 import os
-import simpleaudio as sa
+from pydub import AudioSegment
+from pydub.playback import play
 # Store current speech process in a global variable
 current_process = None
 
@@ -35,10 +35,9 @@ def terminate_voice():
 
 async def speak_chinese(text, voice="zh-HK-HiuGaaiNeural"):
     communicate = edge_tts.Communicate(text, voice=voice)
-    await communicate.save("output.wav")
-    wave_obj = sa.WaveObject.from_wave_file("output.wav")
-    play_obj = wave_obj.play()
-    play_obj.wait_done() 
+    await communicate.save("output.mp3")
+    audio = AudioSegment.from_file("output.mp3")
+    play(audio)
     #os.remove("output.mp3")
 
 
