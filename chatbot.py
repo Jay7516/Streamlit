@@ -19,7 +19,7 @@ llm = init_chat_model(
 
 st.title("🍟🍔 Mcdonald Chatbot")
 json_string_for_prompt = ""
-with open(r"json\data\mc_data.json", 'r') as f:
+with open("json/data/mc_data.json", 'r') as f:
     # Load JSON data into a Python dictionary/list
     data_dict = json.load(f)
     # Convert the Python dictionary/list back to a formatted JSON string
