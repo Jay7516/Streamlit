@@ -6,6 +6,7 @@ import pyttsx3
 from multiprocessing import Process
 from pydub import AudioSegment
 from pydub.playback import play
+import pygame
 FILEPATH = "sound\Im Joe Biden and I approve this message.mp3"
 
 
@@ -43,8 +44,15 @@ def terminate_voice():
 async def speak_voice(text, voice="zh-HK-HiuGaaiNeural"):
     communicate = edge_tts.Communicate(text, voice=voice)
     await communicate.save("output.mp3")
-    audio = AudioSegment.from_file("output.mp3")
-    play(audio)
+    # audio = AudioSegment.from_file("output.mp3")
+    # play(audio)
+    pygame.mixer.init()
+
+    # Load the sound file (use a valid path to a .wav or .mp3 file)
+    sound = pygame.mixer.Sound('output.mp3')
+
+    # Play the sound (loops = -1 means it will loop forever, 0 means play once)
+    sound.play()
     # playsound("output.mp3")
     # os.remove("output.mp3")
 
