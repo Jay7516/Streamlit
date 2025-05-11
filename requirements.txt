@@ -11,7 +11,7 @@ pypdf
 pytest
 boto3
 pydub
-playsound==1.2.2
+#playsound==1.2.2
 crawl4ai
 pydantic
 langchain_google_genai

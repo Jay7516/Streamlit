@@ -60,7 +60,7 @@ if prompt:
     with st.chat_message("assistant"):
 
         output = llm.invoke(st.session_state.messages)
-
+    
         st.markdown(output.content)
         st.session_state.messages.append(AIMessage(content=output.content))
         call_speak(output.content)
