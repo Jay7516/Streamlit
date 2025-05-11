@@ -2,3 +2,4 @@ ffmpeg
 portaudio19-dev
 python-all-dev
 espeak
+alsa-utils
