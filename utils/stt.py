@@ -37,8 +37,13 @@ def transcribe_audio(file_path):
     r = sr.Recognizer()
     with sr.AudioFile(file_path) as source:
         audio_data = r.record(source)
-    text = r.recognize_google(audio_data)
-    return text
+    try:
+        return r.recognize_google(audio_data)
+    except sr.UnknownValueError:
+        return "Couldn't understand text. Ignore this text"
+    except sr.RequestError as e:
+        return "Request failed. Ignore this text"
+
 if __name__ == "__main__":
     transcribe_audio()
 #print("AI Response")
