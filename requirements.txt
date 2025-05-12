@@ -20,5 +20,3 @@ pyttsx3
 pydub
 streamlit_extras
 faster_whisper
-torch
-torchvision
