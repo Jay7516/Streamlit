@@ -15,7 +15,6 @@ import sys
 #sys.modules['torch.classes'].__path__ = []
 if not os.environ.get("GOOGLE_API_KEY"):
     os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
-
 llm = init_chat_model(
     os.getenv("CHAT_MODEL"),
     model_provider=os.getenv("MODEL_PROVIDER"),
@@ -94,5 +93,9 @@ if prompt:
     create_message(prompt)
     chat_input = True
 audio = st.audio_input("🎙️ Or record your question")
+import tempfile
 if audio and not chat_input:
-    create_message(transcribe_audio(audio))
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp_file:
+        tmp_file.write(audio.getvalue())
+        tmp_file_path = tmp_file.name
+    create_message(transcribe_audio(tmp_file_path))

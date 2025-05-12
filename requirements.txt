@@ -19,5 +19,8 @@ edge-tts
 pyttsx3
 pydub
 streamlit_extras
-openai
+# openai-whisper
+# numpy==2.1
+# numexpr
+SpeechRecognition
 #faster_whisper
