@@ -19,4 +19,5 @@ edge-tts
 pyttsx3
 pydub
 streamlit_extras
+openai
 #faster_whisper
