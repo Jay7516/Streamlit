@@ -22,4 +22,3 @@ streamlit_extras
 faster_whisper
 torch
 torchvision
-torchaudio
