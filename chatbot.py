@@ -12,7 +12,7 @@ import base64
 #from utils.stt import transcribe_audio
 from utils.utils import markdown_to_text
 import sys
-sys.modules['torch.classes'].__path__ = []
+#sys.modules['torch.classes'].__path__ = []
 if not os.environ.get("GOOGLE_API_KEY"):
     os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
 

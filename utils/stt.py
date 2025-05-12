@@ -16,7 +16,8 @@ def transcribe_audio(file_path):
         full_transcription += segment.text + " "
     #os.remove(file_path)
     return full_transcription
-
+def openai_transcribe_audio(file_path):
+    pass
 if __name__ == "__main__":
     transcribe_audio()
 #print("AI Response")
