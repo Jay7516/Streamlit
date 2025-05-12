@@ -19,4 +19,4 @@ edge-tts
 pyttsx3
 pydub
 streamlit_extras
-faster_whisper
+#faster_whisper

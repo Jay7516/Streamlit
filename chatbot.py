@@ -9,7 +9,7 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 import json
 from utils.sound_util import call_speak,generate_voice
 import base64
-from utils.stt import transcribe_audio
+#from utils.stt import transcribe_audio
 from utils.utils import markdown_to_text
 import sys
 sys.modules['torch.classes'].__path__ = []
@@ -95,5 +95,6 @@ if prompt:
     chat_input = True
 audio = st.audio_input("🎙️ Or record your question")
 if audio and not chat_input:
-    create_message(transcribe_audio(audio))
-    chat_input = True
+    create_message("Test")
+    pass
+    #create_message(transcribe_audio(audio))
