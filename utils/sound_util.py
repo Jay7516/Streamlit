@@ -1,17 +1,17 @@
 import edge_tts
 import asyncio
-from playsound import playsound
+#from playsound import playsound
 import os
 import pyttsx3
 from multiprocessing import Process
 from pydub import AudioSegment
 from pydub.playback import play
-import pygame
+#import pygame
 FILEPATH = "sound\Im Joe Biden and I approve this message.mp3"
 
 
-def play_sound():
-    playsound(FILEPATH)
+# def play_sound():
+#     playsound(FILEPATH)
 
 
 # Store current speech process in a global variable

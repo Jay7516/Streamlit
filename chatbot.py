@@ -9,6 +9,10 @@ from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
 import json
 from utils.sound_util import call_speak,generate_voice
 import base64
+from utils.stt import transcribe_audio
+from utils.utils import markdown_to_text
+import sys
+sys.modules['torch.classes'].__path__ = []
 if not os.environ.get("GOOGLE_API_KEY"):
     os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
 
@@ -32,7 +36,10 @@ response = f"""
     {json_string_for_prompt}
     ```
 
-    Based only on this data, please: Answer questions in a respecful manner without any bold text or -
+    Based only on this data(don't mention that), please: Answer questions in a respecful manner and don't overcomplicated info
+    
+    If the user ask to display an image, you MUST use Markdown format like this: ![alt text](URL)
+    use the url from the json
 """
 if "messages" not in st.session_state:
     st.session_state.messages = [
@@ -40,6 +47,8 @@ if "messages" not in st.session_state:
             content=response
         )
     ]
+# if "audio_processed" not in st.session_state:
+#     st.session_state.audio_processed = None
 
 for message in st.session_state.messages:
     if isinstance(message, HumanMessage):
@@ -48,8 +57,10 @@ for message in st.session_state.messages:
     elif isinstance(message, AIMessage):
         with st.chat_message("assistant"):
             st.markdown(message.content)
+spacer = st.empty()
 
-prompt = st.chat_input("Ask me anything about the mcdonald menu!")
+prompt = st.chat_input("Ask me anything about the McDonald's menu!")
+
 def autoplay_audio(file_path: str):
     with open(file_path, "rb") as f:
         data = f.read()
@@ -63,18 +74,26 @@ def autoplay_audio(file_path: str):
             md,
             unsafe_allow_html=True,
         )
-if prompt:
-
+st.divider()  # Optional visual separation
+# Simulated audio-to-text transcription (placeholder)
+def create_message(message):
     with st.chat_message("user"):
-        st.markdown(prompt)
+        st.markdown(message)
 
-        st.session_state.messages.append(HumanMessage(content=prompt))
+        st.session_state.messages.append(HumanMessage(content=message))
 
     with st.chat_message("assistant"):
-
         output = llm.invoke(st.session_state.messages)
     
         st.markdown(output.content)
         st.session_state.messages.append(AIMessage(content=output.content))
-        call_speak(output.content)
+        call_speak(markdown_to_text(output.content))
         autoplay_audio("output.mp3")
+chat_input = False
+if prompt:
+    create_message(prompt)
+    chat_input = True
+audio = st.audio_input("🎙️ Or record your question")
+if audio and not chat_input:
+    create_message(transcribe_audio(audio))
+    chat_input = True
