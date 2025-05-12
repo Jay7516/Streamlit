@@ -4,7 +4,7 @@ from faster_whisper import WhisperModel
 model_size = "large-v3"
 
 # Run on GPU with FP16
-model = WhisperModel(model_size, device="cuda", compute_type="float16")
+model = WhisperModel(model_size, device="cpu", compute_type="float16")
 
 def transcribe_audio(file_path):
     segments, info = model.transcribe(file_path, beam_size=7)
