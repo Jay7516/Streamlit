@@ -4,6 +4,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 gemini_key = ""
 hf_key = ""
+
+
 def load_env():
     global gemini_key
     global hf_key
@@ -14,6 +16,8 @@ def load_env():
     #print(os.getenv("GEMINI_KEY"),"DSGDSGDG")
     gemini_key = os.getenv("GEMINI_KEY")
     hf_key = os.getenv("HF_KEY")
+    if not os.environ.get("GOOGLE_API_KEY"):
+        os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
     # Read environment variables
     #sender_email = os.getenv("EMAIL")
     #password_email = os.getenv("PASSWORD")

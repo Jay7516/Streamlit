@@ -1,16 +1,13 @@
 import os
-from dotenv import load_dotenv
+from utils.load_env import load_dotenv
 import streamlit as st
 from pypdf import PdfReader
 
-load_dotenv()
 
 from langchain.chat_models import init_chat_model
 from langchain.prompts import PromptTemplate
 from utils.sound_util import call_speak
-if not os.environ.get("GOOGLE_API_KEY"):
-    os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_KEY")
-
+load_dotenv()
 llm = init_chat_model(
     os.getenv("CHAT_MODEL"),
     model_provider=os.getenv("MODEL_PROVIDER"),
@@ -19,7 +16,7 @@ llm = init_chat_model(
 
 st.title("File Question Answering Application")
 
-uploaded_file = st.file_uploader("Upload a PDF file", type="pdf")
+uploaded_file = st.file_uploader("Upload a PDF file", type="pdf",accept_multiple_files=True)
 
 question = st.text_area("Ask a question about the file:",disabled=not uploaded_file)
 
